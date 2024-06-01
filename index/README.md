@@ -1,3 +1,17 @@
+# Weather App
+
+A simple weather application built with React that fetches and displays current weather data for any city using the OpenWeatherMap API.
+
+## Features
+
+- Search for a city and get the current weather details.
+- Displays temperature, humidity, wind speed, and geographical coordinates (latitude and longitude).
+- Shows different weather icons based on the current weather condition.
+- Handles errors such as city not found.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
