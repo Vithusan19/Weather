@@ -7,7 +7,7 @@ import rain from './Assets/rain1.png';
 import snow from './Assets/snow.png';
 import humidityicon from './Assets/humidity.png';
 import windicon from './Assets/wind.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const WeatherDetail = ({ icon, temp, city, country, lat, lng, humidity, wind }) => {
   return (
@@ -62,6 +62,7 @@ function App() {
   const [wind, setWind] = useState(0);
   const [loading, setLoading] = useState(false);
   const [cityNotFound, setCityNotFound] = useState(false);
+  const [error, seterror] = useState(null);
 
   const weatherIcon = {
     "01d": clear,
@@ -106,6 +107,7 @@ function App() {
       }
     } catch (error) {
       console.error("Error:", error.message);
+      seterror("An error occured while fetching weather data");
     } finally {
       setLoading(false);
     }
@@ -120,6 +122,10 @@ function App() {
       search();
     }
   };
+  useEffect (function(){
+    search();
+  },[])
+  
 
   return (
     <>
@@ -131,7 +137,10 @@ function App() {
               <img src={searchicon} alt='search' />
             </div>
           </div>
-          <WeatherDetail icon={icon} temp={temp} city={city} country={country} lat={lat} lng={lng} humidity={humidity} wind={wind} />
+          {!loading && !cityNotFound &&<WeatherDetail icon={icon} temp={temp} city={city} country={country} lat={lat} lng={lng} humidity={humidity} wind={wind} />}
+          { loading &&<div className='loading-msg'> Loading ...</div>}
+          {error &&<div className='error-msg'>{error}</div>}
+          { cityNotFound&&<div className='city-not-found'>City not found</div>}
           <p className='footer'>Design by <span>Vithu</span></p>
         </div>
       </div>
