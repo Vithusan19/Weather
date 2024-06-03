@@ -2,7 +2,7 @@ import './App.css';
 import searchicon from './Assets/search.png';
 import cloud from './Assets/cloud.png';
 import drizzle from './Assets/deizzle.png';
-import clear from './Assets/clear.png';
+import clear from './Assets/clear1.png';
 import rain from './Assets/rain1.png';
 import snow from './Assets/snow.png';
 import humidityicon from './Assets/humidity.png';
